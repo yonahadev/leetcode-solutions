@@ -1,0 +1,9 @@
+class Solution:
+    def largestLocal(self, grid: List[List[int]]) -> List[List[int]]:
+        gridSize = len(grid)
+        finalMatrix = []
+        for i in range(1,gridSize-1): 
+            finalMatrix.append([])
+            for j in range(1,gridSize-1): #gives every valid index to check
+                finalMatrix[i-1].append(max(grid[i-1][j-1],grid[i][j-1],grid[i+1][j-1],grid[i-1][j],grid[i][j],grid[i+1][j],grid[i-1][j+1],grid[i][j+1],grid[i+1][j+1]))
+        return finalMatrix
