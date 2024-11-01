@@ -1,0 +1,19 @@
+class Solution:
+    def makeFancyString(self, s: str) -> str:
+        newString = ""
+        prev = ''
+        consecutive = 0
+        for i in range(len(s)):
+            char = s[i]
+            if char == prev: 
+                consecutive += 1
+                if (consecutive == 2):
+                    consecutive -= 1
+                    
+                else: 
+                    newString += (char)
+            else: 
+                consecutive = 0
+                newString += (char)
+            prev = char
+        return newString
