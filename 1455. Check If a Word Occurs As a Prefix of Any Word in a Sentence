@@ -1,0 +1,25 @@
+class Solution:
+    def isPrefixOfWord(self, sentence: str, searchWord: str) -> int:
+        indexInWord = 0
+        wordIndex = 1
+        potentialMatch = True
+        lengthOfSearchWord = len(searchWord)
+        for i in range(len(sentence)):
+            char = sentence[i]
+
+            if char == " ": #reset state ready for another word match
+                wordIndex += 1
+                indexInWord = -1
+                potentialMatch = True
+
+            print(char,indexInWord,potentialMatch)
+
+            if indexInWord < lengthOfSearchWord: #ensure we don't index outside of our search word
+                if searchWord[indexInWord] != char and indexInWord > -1:
+                    potentialMatch = False
+            if potentialMatch and indexInWord == lengthOfSearchWord-1: #we have checked all letters
+                return wordIndex
+
+            indexInWord += 1
+        return -1
+            
