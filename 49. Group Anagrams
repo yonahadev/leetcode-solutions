@@ -1,0 +1,17 @@
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        anagrams = [] #store the original anagram forms
+        exists = {} #map to store whether letter combo exists and index? 
+        index = 0
+        for string in strs: 
+            sortedString = ""
+            for char in sorted(string):
+                sortedString += char
+            if sortedString in exists: #if it exists we append its normal form
+                anagrams[exists[sortedString]].append(string)
+            else: 
+                anagrams.append([])
+                anagrams[index].append(string)
+                exists[sortedString] = index
+                index += 1
+        return anagrams
